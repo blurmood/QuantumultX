@@ -1,2 +1,0 @@
-# QuantumultX
-quanx规则
