@@ -2737,12 +2737,17 @@ function VL2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
     thost = thost1.length >= thost2.length ? thost1 : thost2;
     puri = cnt.indexOf("&path=") == -1? puri : "obfs-uri=" + decodeURIComponent(cnt.split("&path=")[1].split("&")[0].split("#")[0])
   } 
-if(obfs=="obfs=wss" && obfs=="obfs=over-tls"){
+if(obfs=="obfs=wss" || obfs=="obfs=over-tls"){
   ptls13 = PTls13 == 1 ? "tls13=true" : "tls13=false"
-  if (Pcert0 == 0) { 
-    pcert = "tls-verification=false" 
-  } else if (Pcert0 == 1) {
-    pcert = "tls-verification=true"
+  // REALITY 协议使用自己的验证机制，不需要 tls-verification
+  if (cnt.indexOf("pbk=") == -1 && cnt.indexOf("sid=") == -1) {
+    if (Pcert0 == 0) {
+      pcert = "tls-verification=false"
+    } else if (Pcert0 == 1) {
+      pcert = "tls-verification=true"
+    }
+  } else {
+    pcert = ""
   }
 } else {
   pcert=""
