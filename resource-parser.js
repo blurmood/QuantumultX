@@ -2705,11 +2705,15 @@ function VL2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
   ptfo = (Ptfo == 1 || cnt.indexOf("tfo=1")!=-1)? "fast-open=true" : "fast-open=false";
   //ptfo = cnt.indexOf("tfo=1") != -1? "fast-open=true" : ptfo
   if (typeU == "SR-URI") {//小火箭内的websocket写法
+    // 检测 REALITY 协议：有 pbk 和 sid 参数
+    var isReality = cnt.indexOf("pbk=") != -1 && cnt.indexOf("sid=") != -1;
+
     if((cnt.indexOf("obfs=none")!=-1 || cnt.indexOf("obfs=")==-1) && cnt.indexOf("tls=1")==-1) {
       // tcp
       obfs = ""
     } else if((cnt.indexOf("obfs=none")!=-1 || cnt.indexOf("obfs=")==-1) && cnt.indexOf("tls=1")!=-1) {
-      obfs = "obfs=over-tls"
+      // REALITY 协议不使用 obfs=over-tls
+      obfs = isReality ? "" : "obfs=over-tls"
     } else if(cnt.indexOf("obfs=http")!=-1) {
       obfs = "obfs=http"
     } else if(cnt.indexOf("obfs=websocket")!=-1) {
@@ -2726,15 +2730,23 @@ function VL2QX(subs, Pudp, Ptfo, Pcert0, PTls13) {
     if(cnt.indexOf("type=http") != -1) {
       obfs="obfs=http"
     } else if (cnt.indexOf("type=ws") != -1) {
-      obfs = cnt.indexOf("security=tls") != -1 || cnt.indexOf("security=reality")!=-1? "obfs=wss" : "obfs=ws" 
+      obfs = cnt.indexOf("security=tls") != -1 || cnt.indexOf("security=reality")!=-1? "obfs=wss" : "obfs=ws"
     } else if(cnt.indexOf("type=")==-1 || cnt.indexOf("type=tcp")!=-1) {
-      obfs = "obfs=over-tls"
+      // REALITY 协议使用专门的标识，不是普通的 TLS
+      if (cnt.indexOf("security=reality") != -1) {
+        obfs = ""  // REALITY 通过 reality-base64-pubkey 等参数标识，不需要 obfs
+      } else {
+        obfs = "obfs=over-tls"
+      }
     } else if(cnt.indexOf("type=")!=-1 && cnt.indexOf("type=tcp")==-1) {//暂不支持类型
     type="NS"
   }
     thost1=cnt.indexOf("&host=") == -1? thost : "obfs-host=" + decodeURIComponent(cnt.split("&host=")[1].split("&")[0].split("#")[0])
     thost2=cnt.indexOf("sni=") == -1? thost : "obfs-host=" + decodeURIComponent(cnt.split("sni=")[1].split("&")[0].split("#")[0]).replace(/\"|(Host\":)|\{|\}/g,"")
-    thost = thost1.length >= thost2.length ? thost1 : thost2;
+    thost3=cnt.indexOf("peer=") == -1? thost : "obfs-host=" + decodeURIComponent(cnt.split("peer=")[1].split("&")[0].split("#")[0]).replace(/\"|(Host\":)|\{|\}/g,"")
+    // 优先使用 peer（REALITY），其次 sni，最后 host
+    thost = thost3.length >= thost2.length ? thost3 : thost2;
+    thost = thost.length >= thost1.length ? thost : thost1;
     puri = cnt.indexOf("&path=") == -1? puri : "obfs-uri=" + decodeURIComponent(cnt.split("&path=")[1].split("&")[0].split("#")[0])
   } 
 if(obfs=="obfs=wss" || obfs=="obfs=over-tls"){
