@@ -4,6 +4,19 @@
 #!homepage=https://github.com/VirgilClyne/GetSomeFries/wiki/🌐-ASN
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Server.png
 
+# > bilibili
+DOMAIN,api.biliapi.com
+DOMAIN,api.biliapi.net
+DOMAIN,api.bilibili.com
+DOMAIN,app.biliapi.com
+DOMAIN,app.biliapi.net
+DOMAIN,app.bilibili.com
+DOMAIN,grpc.biliapi.net
+DOMAIN,m.bilibili.com
+DOMAIN,upos-hz-mirrorakam.akamaized.net
+DOMAIN,www.bilibili.com
+DOMAIN-KEYWORD,cn-hk-eq-bcache-
+
 IP-ASN,4134 // 中国电信骨干网
 IP-ASN,4538 // 中国教育科研网络中心
 IP-ASN,4611 // 中国新华网
