@@ -537,15 +537,15 @@ HOST,merchant-rating.alibaba.com,proxy
 HOST-SUFFIX,go.dev,proxy
 HOST-SUFFIX,golang.org,proxy
 # ---(Apple)---
-HOST-SUFFIX,appsto.re // Apple URL Shortener,proxy
-HOST-SUFFIX,smoot.apple.com // Spotlight,proxy
-HOST,amp-api.podcasts.apple.com // Podcasts,proxy
-HOST,beta.music.apple.com // Apple Music Web,proxy
-HOST,books.itunes.apple.com // iBooks Store download,proxy
-HOST,facetime.apple.com // FaceTime Links,proxy
-HOST,lookup-api.apple.com // Look Up,proxy
-HOST,radio.itunes.apple.com // Apple Music Radio,proxy
-HOST,apple-relay.apple.com // Apple Intelligence,proxy
+HOST-SUFFIX,appsto.re,proxy
+HOST-SUFFIX,smoot.apple.com,proxy
+HOST,amp-api.podcasts.apple.com,proxy
+HOST,beta.music.apple.com,proxy
+HOST,books.itunes.apple.com,proxy
+HOST,facetime.apple.com,proxy
+HOST,lookup-api.apple.com,proxy
+HOST,radio.itunes.apple.com,proxy
+HOST,apple-relay.apple.com,proxy
 HOST,apple-relay.cloudflare.com,proxy
 HOST,apple-relay.fastly-edge.com,proxy
 HOST,cp4.cloudflare.com,proxy
