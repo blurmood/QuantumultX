@@ -206,6 +206,7 @@ HOST-SUFFIX,tortoisesvn.net,proxy
 HOST-SUFFIX,tradingview.com,proxy
 HOST-SUFFIX,trustwallet.com,proxy
 HOST-SUFFIX,turbobit.net,proxy
+HOST-SUFFIX,tuta.com,proxy
 HOST-SUFFIX,tutanota.com,proxy
 HOST-SUFFIX,typeset.io,proxy
 HOST-SUFFIX,urbandictionary.com,proxy
@@ -269,6 +270,8 @@ HOST-SUFFIX,tenor.com,proxy
 HOST-SUFFIX,xn--ngstr-lra8j.com,proxy
 HOST-KEYWORD,google,proxy
 HOST-KEYWORD,.blogspot.,proxy
+HOST-KEYWORD,github,proxy
+HOST-KEYWORD,notion,proxy
 # > Apple
 HOST,testflight.apple.com,proxy
 # > Automattic
@@ -515,6 +518,7 @@ HOST-SUFFIX,telesco.pe,proxy
 HOST-SUFFIX,tg.dev,proxy
 HOST-SUFFIX,tx.me,proxy
 IP-CIDR,91.108.0.0/16,proxy,no-resolve
+IP-CIDR,95.161.76.0/20,proxy,no-resolve
 IP-CIDR,109.239.140.0/24,proxy,no-resolve
 IP-CIDR,139.59.210.98/32,proxy,no-resolve
 IP-CIDR,149.154.160.0/20,proxy,no-resolve
