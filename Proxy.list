@@ -268,6 +268,7 @@ HOST-SUFFIX,gvt1.com,proxy
 HOST-SUFFIX,gvt3.com,proxy
 HOST-SUFFIX,tenor.com,proxy
 HOST-SUFFIX,xn--ngstr-lra8j.com,proxy
+HOST,lens.l.google.com,proxy
 HOST-KEYWORD,google,proxy
 HOST-KEYWORD,.blogspot.,proxy
 HOST-KEYWORD,github,proxy
